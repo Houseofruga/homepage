@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trailwatch — Competitor page monitoring for small teams</title>
+<meta
+  name="description"
+  content="We watch your competitors' pricing, homepage and changelog, and email you one digest a week explaining what actually changed."
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --border: #e6e2da;
+    --border-soft: #efece6;
+    --ink: #1a1a17;
+    --ink-2: #4a4740;
+    --ink-3: #6e6b63;
+    --ink-4: #8b877e;
+    --ink-5: #948f86;
+    --ink-faint: #a8a49a;
+    --accent: #9ff50a;
+    --accent-hover: #8ad800;
+    --accent-ink: #557a00;
+    --accent-wash: #eefbc7;
+    --accent-line: #d6f59b;
+    --link: #2563eb;
+    --link-hover: #1d4ed8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+  }
+
+  body {
+    color: var(--ink);
+    font-family: "DM Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+  }
+
+  button {
+    border-radius: 0;
+    font-family: inherit;
+  }
+
+  .shell {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  /* --------------------------------------------------------- buttons */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 16px;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+
+  .btn:hover {
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: var(--ink);
+  }
+
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent-ink);
+    color: var(--accent-ink);
+  }
+
+  /* --------------------------------------------------------- header */
+
+  header {
+    padding-top: 26px;
+    padding-bottom: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .header-login {
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+
+  .header-login:hover {
+    color: var(--accent-ink);
+  }
+
+  /* ----------------------------------------------------------- hero */
+
+  .hero {
+    padding-top: 74px;
+    padding-bottom: 70px;
+  }
+
+  .hero-inner {
+    max-width: 660px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 22px;
+  }
+
+  h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin: 0 0 24px 0;
+  }
+
+  .hero-body {
+    font-size: 18px;
+    line-height: 1.62;
+    color: var(--ink-2);
+    margin: 0 0 34px 0;
+    max-width: 540px;
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .hero-cta .btn {
+    padding: 13px 24px;
+    font-size: 15px;
+  }
+
+  .hero-note {
+    font-size: 13.5px;
+    color: var(--ink-4);
+  }
+
+  /* ------------------------------------------------------ proof card */
+
+  .proof {
+    padding-bottom: 80px;
+  }
+
+  .proof-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 30px 34px;
+    max-width: 720px;
+  }
+
+  .proof-label {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .proof-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .proof-tag {
+    flex: 0 0 86px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    padding-top: 5px;
+  }
+
+  .proof-summary {
+    font-size: 19px;
+    line-height: 1.5;
+  }
+
+  .proof-meta {
+    font-size: 12.5px;
+    color: var(--ink-5);
+    margin-top: 9px;
+  }
+
+  .proof-footer {
+    padding-top: 18px;
+    font-size: 13px;
+    color: var(--ink-5);
+  }
+
+  /* -------------------------------------------------------- how band */
+
+  .how-band {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .how {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 46px 0;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 38px;
+  }
+
+  .step-num {
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    color: var(--accent-ink);
+    margin-bottom: 14px;
+  }
+
+  .step-title {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .step-body {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-3);
+  }
+
+  /* --------------------------------------------------------- pricing */
+
+  .pricing {
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+
+  .pricing h2 {
+    margin-bottom: 12px;
+  }
+
+  .pricing-sub {
+    font-size: 15px;
+    color: var(--ink-3);
+    margin: 0 0 40px 0;
+  }
+
+  .plan-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 760px;
+  }
+
+  .plan {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .plan-pro {
+    border-color: var(--accent-line);
+  }
+
+  .plan-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .plan-name {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .plan-badge {
+    font-size: 11.5px;
+    color: var(--accent-ink);
+    background: var(--accent-wash);
+    padding: 3px 10px;
+  }
+
+  .plan-price {
+    font-size: 34px;
+    margin: 14px 0 24px 0;
+  }
+
+  .plan-per {
+    font-size: 15px;
+    color: var(--ink-4);
+  }
+
+  .plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+
+  .plan-cta {
+    margin-top: 28px;
+    width: 100%;
+    padding: 11px;
+    font-size: 14px;
+  }
+
+  /* ---------------------------------------------------------- footer */
+
+  .footer-band {
+    border-top: 1px solid var(--border);
+  }
+
+  footer.site {
+    padding-top: 34px;
+    padding-bottom: 34px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: var(--ink-5);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 860px) {
+    h1 {
+      font-size: 40px;
+    }
+
+    .how-grid,
+    .plan-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="shell">
+  <img src="./logo.svg" alt="Trailwatch" />
+  <div class="header-actions">
+    <a class="header-login" href="https://trailwatch.houseofruga.com/login">Log in</a>
+    <a class="btn btn-primary" href="https://trailwatch.houseofruga.com/login?mode=signup">Start free</a>
+  </div>
+</header>
+
+<section class="hero shell">
+  <div class="hero-inner">
+    <div class="eyebrow">Competitor page monitoring for small teams</div>
+    <h1>Stop manually checking competitor sites.</h1>
+    <p class="hero-body">
+      We watch the pages that matter &mdash; pricing, homepage, changelog &mdash; and email you
+      one digest a week explaining what actually changed. In sentences, not diffs.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://trailwatch.houseofruga.com/login?mode=signup">
+        Start free &mdash; 1 competitor
+      </a>
+      <span class="hero-note">No credit card. Pro is $19/mo when you need more.</span>
+    </div>
+  </div>
+</section>
+
+<section class="proof shell">
+  <div class="proof-card">
+    <div class="proof-label">A line from last Monday&rsquo;s digest</div>
+    <div class="proof-row">
+      <div class="proof-tag">Pricing</div>
+      <div style="flex:1">
+        <div class="proof-summary">
+          Vercel cut the Pro plan&rsquo;s included bandwidth from 1&nbsp;TB to 100&nbsp;GB and
+          now bills overage at $0.15 per GB.
+        </div>
+        <div class="proof-meta">Detected 14 Aug &middot; vercel.com/pricing</div>
+      </div>
+    </div>
+    <div class="proof-footer">
+      And 31 trivial edits that week we didn&rsquo;t send you: cookie banners, rotating
+      testimonials, tracking scripts.
+    </div>
+  </div>
+</section>
+
+<section class="how-band">
+  <div class="how shell">
+    <h2>How it works</h2>
+    <div class="how-grid">
+      <div>
+        <div class="step-num">01</div>
+        <div class="step-title">Paste the pages</div>
+        <p class="step-body">
+          Add a competitor, then the URLs you care about with a label like &ldquo;pricing&rdquo;.
+          Takes about a minute.
+        </p>
+      </div>
+      <div>
+        <div class="step-num">02</div>
+        <div class="step-title">We check daily and filter</div>
+        <p class="step-body">
+          Timestamps, rotating quotes, script tags and layout noise get dropped before anything
+          reaches you.
+        </p>
+      </div>
+      <div>
+        <div class="step-num">03</div>
+        <div class="step-title">One email on Monday</div>
+        <p class="step-body">
+          Grouped by competitor, one plain sentence per change, with a link if you want the
+          detail. Read it in 30 seconds.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing shell">
+  <h2>Two plans</h2>
+  <p class="pricing-sub">Start free. Upgrade when you&rsquo;re watching more than one company.</p>
+  <div class="plan-grid">
+    <div class="plan">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0</div>
+      <div class="plan-features">
+        <div>1 competitor</div>
+        <div>3 pages</div>
+        <div>Weekly email digest</div>
+      </div>
+      <a class="btn btn-secondary plan-cta" href="https://trailwatch.houseofruga.com/login?mode=signup">
+        Start free
+      </a>
+    </div>
+
+    <div class="plan plan-pro">
+      <div class="plan-head">
+        <div class="plan-name">Pro</div>
+        <span class="plan-badge">For 2&ndash;10 competitors</span>
+      </div>
+      <div class="plan-price">$19<span class="plan-per">/month</span></div>
+      <div class="plan-features">
+        <div>10 competitors</div>
+        <div>10 pages each</div>
+        <div>Weekly email digest</div>
+      </div>
+      <a class="btn btn-primary plan-cta" href="https://trailwatch.houseofruga.com/login?mode=signup">
+        Start free, upgrade later
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-band">
+  <footer class="site shell">
+    <span>Trailwatch</span>
+    <span>Built for people with better things to check.</span>
+  </footer>
+</div>
+
+</body>
+</html>
