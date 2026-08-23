@@ -20,7 +20,9 @@
 
   <style>
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: #FFF8E5; overflow-x: hidden; }
+    /* clip (not hidden) prevents any horizontal bleed WITHOUT making body a
+       scroll container — avoids the iOS Safari phantom vertical-scroll bug */
+    html, body { margin: 0; padding: 0; background: #FFF8E5; overflow-x: clip; }
     body {
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
