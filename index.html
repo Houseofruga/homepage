@@ -33,7 +33,9 @@
     ::selection { background: #291A1A; color: #FFF8E5; }
     :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
-    .root { background: #FFF8E5; color: #291A1A; min-height: 100vh; }
+    /* dvh (dynamic viewport height) tracks the visible area as the iOS toolbar
+       shows/hides — avoids the extra scroll 100vh causes on mobile */
+    .root { background: #FFF8E5; color: #291A1A; min-height: 100vh; min-height: 100dvh; }
 
     /* ---------------------------------------------------------- header + thesis */
     .head {
