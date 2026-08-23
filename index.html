@@ -4,143 +4,321 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>House of Ruga</title>
-  <meta name="description" content="House of Ruga — coming soon." />
+  <meta name="description" content="House of Ruga — an independent software studio. Tools we built for ourselves. Now yours." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap"
+    href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap"
     rel="stylesheet"
   />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    :root {
-      --bg: #f5f5f5;
-      --surface: #ffffff;
-      --border: #e6e2da;
-      --ink: #1a1a17;
-      --ink-3: #6e6b63;
-      --ink-faint: #a8a49a;
-      --accent: #9ff50a;
-      --accent-line: #d6f59b;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #FFF8E5; }
     body {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "DM Sans", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
+      text-rendering: optimizeLegibility;
+      font-family: 'Satoshi', 'Inter', system-ui, sans-serif;
+      color: #291A1A;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #291A1A; color: #FFF8E5; }
+    :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+    .root { background: #FFF8E5; color: #291A1A; min-height: 100vh; }
+
+    /* ---------------------------------------------------------- header + thesis */
+    .head {
+      padding: 44px 80px 0 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hor-logo { height: 64px; width: auto; display: block; }
+
+    .eyebrow {
+      margin-top: clamp(90px, 16vh, 180px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.2em;
+      color: rgba(41, 26, 26, 0.55);
+      margin-bottom: 34px;
+    }
+    .thesis {
+      font-family: 'Clash Display', 'Archivo', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: clamp(38px, 7.4vw, 124px);
+      line-height: 0.9;
+      letter-spacing: -0.028em;
+      margin: 0 0 clamp(90px, 16vh, 170px) 0;
+      max-width: 1120px;
+      text-wrap: balance;
+    }
+    .thesis [data-word] { display: inline-block; }
+
+    /* ---------------------------------------------------------- products band */
+    .products { background: #1A1010; color: #FFF8E5; }
+    .products-inner { max-width: 1280px; margin: 0 auto; padding: 96px 80px; }
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: rgba(255, 248, 229, 0.55);
+      margin-bottom: 40px;
+    }
+    .plist { display: flex; flex-direction: column; gap: 24px; }
+
+    .pcard {
+      display: grid;
+      grid-template-columns: 1fr auto 56px;
       align-items: center;
-      min-height: 100vh;
-      padding: 24px;
+      gap: 32px;
+      background: #FFF8E5;
+      color: #291A1A;
+      border-radius: 0;
+      padding: 40px clamp(28px, 3.4vw, 48px);
+      transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.28s ease;
+    }
+    .pcard:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4); }
+
+    .pcard-logo { height: clamp(30px, 3.4vw, 44px); width: auto; display: block; max-width: 100%; }
+    .pcard-desc {
+      font-family: 'Satoshi', sans-serif;
+      font-size: clamp(14px, 1.5vw, 17px);
+      line-height: 1.4;
+      color: rgba(41, 26, 26, 0.7);
+      margin-top: 14px;
     }
 
-    .hero {
-      flex: 1;
+    .pstatus {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: #291A1A;
+    }
+    .pstatus .dot { width: 9px; height: 9px; border-radius: 50%; }
+
+    .popen {
+      justify-self: end;
+      width: 48px;
+      height: 48px;
+      border-radius: 0;
+      border: 1px solid rgba(41, 26, 26, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      max-width: 480px;
-      padding-top: 24px;
-      padding-bottom: 24px;
+      font-size: 20px;
+      color: #291A1A;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .pcard:hover .popen {
+      background: #291A1A;
+      color: #FFF8E5;
+      border-color: #291A1A;
+      transform: translateX(3px);
     }
 
-    .hero-logo {
-      width: 240px;
-      max-width: 70vw;
-      height: auto;
-      display: block;
-      margin: 0 auto;
+    .more {
+      margin-top: 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(255, 248, 229, 0.4);
     }
 
-    h1 {
-      font-size: clamp(32px, 6vw, 48px);
+    /* ---------------------------------------------------------- say hi */
+    .hi { max-width: 1280px; margin: 0 auto; padding: 110px 80px 0 80px; }
+    .hi-inner { max-width: 640px; }
+    .hi h2 {
+      font-family: 'Clash Display', 'Archivo', sans-serif;
       font-weight: 600;
-      letter-spacing: -0.02em;
-      margin: 0 0 14px 0;
-    }
-
-    p {
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--ink-3);
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
       margin: 0;
     }
-
-    /* ------------------------------------------------ product catalogue */
-
-    .catalogue {
-      width: 100%;
-      max-width: 480px;
-      padding-bottom: 40px;
+    .hi p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: clamp(17px, 1.9vw, 21px);
+      line-height: 1.5;
+      color: rgba(41, 26, 26, 0.8);
+      margin: 24px 0 0 0;
     }
-
-    .catalogue-label {
-      font-size: 11px;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 14px;
-      text-align: center;
+    .hi-email {
+      display: inline-block;
+      margin-top: 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(15px, 1.8vw, 19px);
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid #291A1A;
+      padding-bottom: 4px;
     }
-
-    .product-card {
+    .hi-social {
       display: flex;
-      align-items: center;
+      gap: 26px;
+      margin-top: 34px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: rgba(41, 26, 26, 0.6);
+    }
+    .hi-social a { border-bottom: 1px solid rgba(41, 26, 26, 0.35); padding-bottom: 2px; }
+
+    /* ---------------------------------------------------------- footer */
+    .foot { max-width: 1280px; margin: 0 auto; padding: 96px 80px 40px 80px; }
+    .foot-inner {
+      display: flex;
+      align-items: flex-end;
       justify-content: space-between;
-      gap: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 18px 22px;
-      text-decoration: none;
-      color: inherit;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(41, 26, 26, 0.2);
+      padding-top: 28px;
+    }
+    .foot-logo { height: 34px; width: auto; display: block; }
+    .foot-est {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: rgba(41, 26, 26, 0.55);
     }
 
-    .product-card:hover {
-      border-color: var(--accent-line);
-      text-decoration: none;
-    }
+    /* ---------------------------------------------------------- responsive */
+    @media (max-width: 760px) {
+      .head, .products-inner, .hi, .foot { padding-left: 26px; padding-right: 26px; }
+      .hor-logo { height: 46px; }
+      .pcard { grid-template-columns: 1fr auto; gap: 18px 14px; }
+      .pstatus { grid-column: 1 / -1; }
 
-    .product-card img {
-      height: 28px;
-      width: auto;
-      display: block;
-    }
-
-    .product-card .arrow {
-      font-size: 18px;
-      color: var(--ink-faint);
-      transition: transform 0.15s ease;
-    }
-
-    .product-card:hover .arrow {
-      transform: translateX(3px);
-      color: var(--ink);
+      /* tighter vertical rhythm on mobile */
+      .head { padding-top: 32px; }
+      .eyebrow { margin-top: clamp(48px, 9vh, 80px); }
+      .thesis { margin-bottom: clamp(48px, 9vh, 80px); }
+      .products-inner { padding-top: 56px; padding-bottom: 56px; }
+      .hi { padding-top: 64px; }
+      .foot { padding-top: 56px; padding-bottom: 32px; }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <img class="hero-logo" src="/houseofruga-logo.svg" alt="House of Ruga" />
+  <div class="root" id="root">
+
+    <!-- 1) HEADER + THESIS -->
+    <section id="top" class="head">
+      <a href="#top" aria-label="House of Ruga — home" style="display:inline-block;">
+        <img class="hor-logo" src="/houseofruga-logo.svg" alt="House of Ruga" />
+      </a>
+      <div class="eyebrow" data-reveal>AN INDEPENDENT SOFTWARE STUDIO · THREE PEOPLE</div>
+      <h1 class="thesis" id="thesis">
+        <span data-word>Tools</span> <span data-word>we</span> <span data-word>built</span>
+        <span data-word>for</span> <span data-word>ourselves.</span> <span data-word>Now</span>
+        <span data-word>yours.</span>
+      </h1>
+    </section>
+
+    <!-- 2) PRODUCT CATALOGUE -->
+    <section class="products">
+      <div class="products-inner">
+        <div class="label" data-reveal>PRODUCTS</div>
+        <div class="plist" data-reveal>
+          <a class="pcard" href="https://trailwatch.houseofruga.com" aria-label="Open TrailWatch — live">
+            <div style="min-width:0;">
+              <img class="pcard-logo" src="/trailwatch/logo.svg" alt="TrailWatch" />
+              <div class="pcard-desc">Know the moment your competitors change — one plain-English digest a week.</div>
+            </div>
+            <div class="pstatus">
+              <span class="dot" style="background:#9FF50A; box-shadow:0 0 12px rgba(159,245,10,0.7);"></span>LIVE
+            </div>
+            <span class="popen" aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="more" data-reveal>MORE IN TIME.</div>
+      </div>
+    </section>
+
+    <!-- 3) SAY HI -->
+    <section class="hi">
+      <div class="hi-inner" data-reveal>
+        <h2>Say hi.</h2>
+        <p>Questions, ideas, or just want to say hello? One of the three of us will answer.</p>
+        <a class="hi-email" href="mailto:houseofrugaofficial@gmail.com">houseofrugaofficial@gmail.com</a>
+        <div class="hi-social">
+          <a href="https://x.com/houseofruga" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://github.com/Houseofruga" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <div class="foot-inner">
+        <img class="foot-logo" src="/houseofruga-logo.svg" alt="House of Ruga" />
+        <span class="foot-est">HOUSE OF RUGA — EST. 2026</span>
+      </div>
+    </footer>
+
   </div>
 
-  <div class="catalogue">
-    <div class="catalogue-label">Product catalogue</div>
-    <a class="product-card" href="/trailwatch">
-      <img src="/trailwatch/logo.svg" alt="Trailwatch" />
-      <span class="arrow">&rarr;</span>
-    </a>
-  </div>
+  <script>
+    (function () {
+      var root = document.getElementById("root");
+      if (!root) return;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce || !("IntersectionObserver" in window)) return;
+
+      // Thesis: word-by-word rise on load.
+      var thesis = document.getElementById("thesis");
+      if (thesis) {
+        var words = Array.prototype.slice.call(thesis.querySelectorAll("[data-word]"));
+        words.forEach(function (w, i) {
+          w.style.opacity = "0";
+          w.style.transform = "translateY(0.42em)";
+          w.style.transition =
+            "opacity 0.62s ease " + (i * 0.08) + "s, transform 0.7s cubic-bezier(0.2,0.75,0.2,1) " + (i * 0.08) + "s";
+        });
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            words.forEach(function (w) {
+              w.style.opacity = "1";
+              w.style.transform = "translateY(0)";
+            });
+          });
+        });
+      }
+
+      // Everything else: reveal on scroll into view.
+      var els = Array.prototype.slice.call(root.querySelectorAll("[data-reveal]")).filter(function (el) {
+        return !(thesis && thesis.contains(el));
+      });
+      els.forEach(function (el) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(18px)";
+      });
+      var io = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) {
+              var el = en.target;
+              el.style.transition = "opacity 0.6s ease, transform 0.7s cubic-bezier(0.2,0.7,0.2,1)";
+              el.style.opacity = "1";
+              el.style.transform = "translateY(0)";
+              obs.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
