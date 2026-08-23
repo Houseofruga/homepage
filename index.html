@@ -20,7 +20,7 @@
 
   <style>
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: #FFF8E5; }
+    html, body { margin: 0; padding: 0; background: #FFF8E5; overflow-x: hidden; }
     body {
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -53,14 +53,17 @@
       font-family: 'Clash Display', 'Archivo', sans-serif;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: clamp(38px, 7.4vw, 124px);
-      line-height: 0.9;
-      letter-spacing: -0.028em;
+      /* oversized + flush-left, sized so the longest word fills the width
+         without overflowing off the right edge */
+      font-size: clamp(40px, 12.5vw, 180px);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      text-align: left;
       margin: 0 0 clamp(90px, 16vh, 170px) 0;
-      max-width: 1120px;
-      text-wrap: balance;
+      max-width: none;
     }
-    .thesis [data-word] { display: inline-block; }
+    /* each word stacked tight on its own line, flush-left */
+    .thesis [data-word] { display: block; white-space: nowrap; }
 
     /* ---------------------------------------------------------- products band */
     .products { background: #1A1010; color: #FFF8E5; }
