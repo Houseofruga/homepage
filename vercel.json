@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/trailwatch",
+      "destination": "https://trailwatch.houseofruga.com",
+      "permanent": true
+    },
+    {
+      "source": "/trailwatch/",
+      "destination": "https://trailwatch.houseofruga.com",
+      "permanent": true
+    }
+  ]
+}
