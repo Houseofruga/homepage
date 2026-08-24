@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Trailwatch — Competitor page monitoring for small teams</title>
+<title>TrailWatch — competitor tracking for founders, one email a week</title>
 <meta
   name="description"
-  content="We watch your competitors' pricing, homepage and changelog, and email you one digest a week explaining what actually changed."
+  content="Add your competitors, get one plain-English email a week on what actually changed — pricing, features, messaging. AI summaries on every plan, even free. By House of Ruga."
 />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -151,11 +151,11 @@
 
   .hero {
     padding-top: 74px;
-    padding-bottom: 70px;
+    padding-bottom: 80px;
   }
 
   .hero-inner {
-    max-width: 660px;
+    max-width: 680px;
   }
 
   .eyebrow {
@@ -179,7 +179,7 @@
     line-height: 1.62;
     color: var(--ink-2);
     margin: 0 0 34px 0;
-    max-width: 540px;
+    max-width: 620px;
   }
 
   .hero-cta {
@@ -194,63 +194,68 @@
     font-size: 15px;
   }
 
-  .hero-note {
-    font-size: 13.5px;
-    color: var(--ink-4);
-  }
+  /* ------------------------------------------------ product dashboard */
 
-  /* ------------------------------------------------------ proof card */
-
-  .proof {
-    padding-bottom: 80px;
-  }
-
-  .proof-card {
+  .dash {
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 30px 34px;
     max-width: 720px;
+    margin-top: 54px;
   }
 
-  .proof-label {
-    font-size: 11px;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 20px;
-  }
-
-  .proof-row {
+  .dash-top {
     display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding-bottom: 20px;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 22px 26px;
     border-bottom: 1px solid var(--border-soft);
   }
 
-  .proof-tag {
-    flex: 0 0 86px;
+  .dash-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .dash-count {
+    font-family: "Geist Mono", monospace;
+    font-size: 12px;
+    color: var(--accent-ink);
+  }
+
+  .dash-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 26px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .dash-tag {
+    flex: 0 0 84px;
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink-4);
-    padding-top: 5px;
+    padding-top: 3px;
   }
 
-  .proof-summary {
-    font-size: 19px;
+  .dash-name {
+    font-size: 14.5px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  .dash-change {
+    font-size: 14.5px;
     line-height: 1.5;
+    color: var(--ink-2);
   }
 
-  .proof-meta {
+  .dash-foot {
+    padding: 16px 26px;
     font-size: 12.5px;
-    color: var(--ink-5);
-    margin-top: 9px;
-  }
-
-  .proof-footer {
-    padding-top: 18px;
-    font-size: 13px;
     color: var(--ink-5);
   }
 
@@ -300,6 +305,76 @@
     color: var(--ink-3);
   }
 
+  /* ----------------------------------------------------------- why */
+
+  .why {
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+
+  .why h2 {
+    margin-bottom: 22px;
+  }
+
+  .why-body {
+    font-size: 16px;
+    line-height: 1.62;
+    color: var(--ink-2);
+    max-width: 660px;
+    margin: 0 0 32px 0;
+  }
+
+  .callout {
+    background: var(--accent-wash);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 660px;
+    margin: 0 0 44px 0;
+  }
+
+  .compare {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    max-width: 760px;
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .compare-row + .compare-row {
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .compare-cell {
+    padding: 16px 22px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink-3);
+  }
+
+  .compare-cell.tw {
+    background: var(--accent-wash);
+    color: var(--ink);
+    border-left: 1px solid var(--border-soft);
+  }
+
+  .compare-head .compare-cell {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink-4);
+  }
+
+  .compare-head .compare-cell.tw {
+    color: var(--accent-ink);
+  }
+
   /* --------------------------------------------------------- pricing */
 
   .pricing {
@@ -308,13 +383,7 @@
   }
 
   .pricing h2 {
-    margin-bottom: 12px;
-  }
-
-  .pricing-sub {
-    font-size: 15px;
-    color: var(--ink-3);
-    margin: 0 0 40px 0;
+    margin-bottom: 40px;
   }
 
   .plan-grid {
@@ -377,6 +446,56 @@
     font-size: 14px;
   }
 
+  .pricing-foot {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-3);
+    max-width: 760px;
+    margin: 28px 0 0 0;
+  }
+
+  /* ------------------------------------------------ final cta + trust */
+
+  .final {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .final-inner {
+    padding-top: 84px;
+    padding-bottom: 84px;
+  }
+
+  .final h2 {
+    margin-bottom: 20px;
+  }
+
+  .final-body {
+    font-size: 16px;
+    line-height: 1.62;
+    color: var(--ink-2);
+    max-width: 600px;
+    margin: 0 0 32px 0;
+  }
+
+  .final-cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .final-cta .btn {
+    padding: 13px 24px;
+    font-size: 15px;
+  }
+
+  .final-quiet {
+    margin-top: 24px;
+    font-size: 13.5px;
+    color: var(--ink-4);
+  }
+
   /* ---------------------------------------------------------- footer */
 
   .footer-band {
@@ -404,98 +523,184 @@
       grid-template-columns: 1fr;
     }
   }
+
+  @media (max-width: 560px) {
+    .shell {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin-bottom: 34px;
+    }
+
+    .hero {
+      padding-top: 52px;
+      padding-bottom: 60px;
+    }
+
+    .dash-top,
+    .dash-row,
+    .dash-foot {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .compare-cell {
+      padding: 13px 15px;
+      font-size: 13px;
+    }
+  }
 </style>
 </head>
 <body>
 
 <header class="shell">
-  <img src="/trailwatch/logo.svg" alt="Trailwatch" />
+  <img src="/trailwatch/logo.svg" alt="TrailWatch" />
   <div class="header-actions">
     <a class="header-login" href="https://trailwatch.houseofruga.com/login">Log in</a>
     <a class="btn btn-primary" href="https://trailwatch.houseofruga.com/login?mode=signup">Start free</a>
   </div>
 </header>
 
+<!-- ============================================ SECTION 1 · HERO -->
 <section class="hero shell">
   <div class="hero-inner">
-    <div class="eyebrow">Competitor page monitoring for small teams</div>
-    <h1>Stop manually checking competitor sites.</h1>
+    <div class="eyebrow">TrailWatch — by House of Ruga</div>
+    <h1>The competitor tracker built for founders, not enterprises.</h1>
     <p class="hero-body">
-      We watch the pages that matter &mdash; pricing, homepage, changelog &mdash; and email you
-      one digest a week explaining what actually changed. In sentences, not diffs.
+      Add your competitors. Get one plain-English email a week on what actually changed &mdash;
+      pricing, features, messaging. No dashboard to babysit, no monitors to configure, no premium
+      tier just to unlock the AI. It just works.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://trailwatch.houseofruga.com/login?mode=signup">
-        Start free &mdash; 2 competitors
-      </a>
-      <span class="hero-note">No credit card. Pro is $19/mo when you need more.</span>
+      <a class="btn btn-primary" href="https://trailwatch.houseofruga.com/login?mode=signup">Start free — no card required</a>
     </div>
   </div>
-</section>
 
-<section class="proof shell">
-  <div class="proof-card">
-    <div class="proof-label">A line from last Monday&rsquo;s digest</div>
-    <div class="proof-row">
-      <div class="proof-tag">Pricing</div>
+  <div class="dash">
+    <div class="dash-top">
+      <div class="dash-title">This week</div>
+      <div class="dash-count">7 meaningful changes across 4 competitors</div>
+    </div>
+    <div class="dash-row">
+      <div class="dash-tag">Pricing</div>
       <div style="flex:1">
-        <div class="proof-summary">
-          Vercel cut the Pro plan&rsquo;s included bandwidth from 1&nbsp;TB to 100&nbsp;GB and
-          now bills overage at $0.15 per GB.
-        </div>
-        <div class="proof-meta">Detected 14 Aug &middot; vercel.com/pricing</div>
+        <div class="dash-name">Northwind</div>
+        <div class="dash-change">Renamed the Starter tier to &ldquo;Basic&rdquo; and moved audit logs up into Pro.</div>
       </div>
     </div>
-    <div class="proof-footer">
-      And 31 trivial edits that week we didn&rsquo;t send you: cookie banners, rotating
-      testimonials, tracking scripts.
+    <div class="dash-row">
+      <div class="dash-tag">Homepage</div>
+      <div style="flex:1">
+        <div class="dash-name">Vantage</div>
+        <div class="dash-change">New headline &mdash; now leads with &ldquo;AI-native&rdquo; and dropped the old tagline.</div>
+      </div>
+    </div>
+    <div class="dash-row">
+      <div class="dash-tag">Changelog</div>
+      <div style="flex:1">
+        <div class="dash-name">Meridian</div>
+        <div class="dash-change">Shipped SSO and a public API, and added a &ldquo;Teams&rdquo; section to the nav.</div>
+      </div>
+    </div>
+    <div class="dash-foot">
+      Plus 47 trivial edits we filtered out this week &mdash; cookie banners, rotating testimonials,
+      tracking scripts.
     </div>
   </div>
 </section>
 
+<!-- ================================== SECTION 2 · HOW IT WORKS -->
 <section class="how-band">
   <div class="how shell">
-    <h2>How it works</h2>
+    <h2>Set it once. Then forget it.</h2>
     <div class="how-grid">
       <div>
         <div class="step-num">01</div>
-        <div class="step-title">Paste the pages</div>
+        <div class="step-title">Add your competitors</div>
         <p class="step-body">
-          Add a competitor, then the URLs you care about with a label like &ldquo;pricing&rdquo;.
-          Takes about a minute.
+          Paste their pricing, homepage, or changelog URLs &mdash; you&rsquo;ll see a snapshot
+          captured on the spot.
         </p>
       </div>
       <div>
         <div class="step-num">02</div>
-        <div class="step-title">We check daily and filter</div>
+        <div class="step-title">It runs itself</div>
         <p class="step-body">
-          Timestamps, rotating quotes, script tags and layout noise get dropped before anything
-          reaches you.
+          Daily checks, trivial edits filtered out. Nothing to configure &mdash; no frequencies to
+          set, no alert rules to tune, no dashboard to check.
         </p>
       </div>
       <div>
         <div class="step-num">03</div>
-        <div class="step-title">One email on Monday</div>
+        <div class="step-title">One email, every Monday</div>
         <p class="step-body">
-          Grouped by competitor, one plain sentence per change, with a link if you want the
-          detail. Read it in 30 seconds.
+          Grouped by competitor, in plain English. &ldquo;Northwind moved audit logs into their Pro
+          plan.&rdquo; Read the whole thing in 30 seconds.
         </p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ================================== SECTION 3 · WHY TRAILWATCH -->
+<section class="why shell">
+  <h2>The big tools weren&rsquo;t built for you.</h2>
+  <p class="why-body">
+    Competitor monitoring today comes in two flavors: enterprise software with battlecards, sales
+    calls, and budgets you don&rsquo;t have &mdash; or general page-watchers that bury the AI
+    summaries behind a premium plan and hand you a dashboard to babysit. TrailWatch does one thing,
+    for one kind of person: it tells founders what their competitors changed, in one weekly email,
+    at a price that doesn&rsquo;t need approval.
+  </p>
+  <div class="callout">
+    Last week, it filtered out 47 trivial edits &mdash; so your email was 7 lines, not 54.
+  </div>
+  <div class="compare">
+    <div class="compare-row compare-head">
+      <div class="compare-cell">The big tools</div>
+      <div class="compare-cell tw">TrailWatch</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Built for enterprise sales teams</div>
+      <div class="compare-cell tw">Built for founders &amp; small teams</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">AI summaries locked behind a premium plan</div>
+      <div class="compare-cell tw">AI summaries on every plan, even free</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">A dashboard to check daily</div>
+      <div class="compare-cell tw">One email a week</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-cell">Metered pricing, &ldquo;contact sales&rdquo;</div>
+      <div class="compare-cell tw">Flat price, sign up in a minute</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================== SECTION 4 · PRICING -->
 <section class="pricing shell">
-  <h2>Two plans</h2>
-  <p class="pricing-sub">Start free. Upgrade when you&rsquo;re watching more than a couple of companies.</p>
+  <h2>Honest pricing. The AI&rsquo;s never behind a paywall.</h2>
   <div class="plan-grid">
     <div class="plan">
-      <div class="plan-name">Free</div>
+      <div class="plan-head">
+        <div class="plan-name">Free</div>
+        <span class="plan-badge">No card required</span>
+      </div>
       <div class="plan-price">$0</div>
       <div class="plan-features">
         <div>2 competitors</div>
-        <div>3 pages each</div>
-        <div>Weekly email digest</div>
+        <div>6 pages</div>
+        <div>Weekly digest</div>
+        <div>AI summaries included</div>
       </div>
       <a class="btn btn-secondary plan-cta" href="https://trailwatch.houseofruga.com/login?mode=signup">
         Start free
@@ -505,25 +710,45 @@
     <div class="plan plan-pro">
       <div class="plan-head">
         <div class="plan-name">Pro</div>
-        <span class="plan-badge">For 3&ndash;10 competitors</span>
+        <span class="plan-badge">Cancel anytime</span>
       </div>
-      <div class="plan-price">$19<span class="plan-per">/month</span></div>
+      <div class="plan-price">$19<span class="plan-per">/mo</span></div>
       <div class="plan-features">
         <div>10 competitors</div>
-        <div>10 pages each</div>
-        <div>Weekly email digest</div>
+        <div>100 pages</div>
+        <div>Daily checks</div>
+        <div>AI summaries included</div>
       </div>
       <a class="btn btn-primary plan-cta" href="https://trailwatch.houseofruga.com/login?mode=signup">
         Start free, upgrade later
       </a>
     </div>
   </div>
+  <p class="pricing-foot">
+    No per-seat fees. No annual lock-in. No &ldquo;contact sales.&rdquo; The AI summaries work on the
+    free plan too &mdash; not gated behind an upgrade.
+  </p>
+</section>
+
+<!-- =============================== SECTION 5 · FINAL CTA + TRUST -->
+<section class="final">
+  <div class="final-inner shell">
+    <h2>Built by founders, not a faceless enterprise.</h2>
+    <p class="final-body">
+      TrailWatch is made by House of Ruga &mdash; a small, bootstrapped studio. That means honest
+      pricing, no growth-hack dark patterns, and you can actually reach the people who built it.
+    </p>
+    <div class="final-cta">
+      <a class="btn btn-primary" href="https://trailwatch.houseofruga.com/login?mode=signup">Start free — no card required</a>
+    </div>
+    <div class="final-quiet">Also a great fit for small marketing teams, PMs, and agencies.</div>
+  </div>
 </section>
 
 <div class="footer-band">
   <footer class="site shell">
-    <span>Trailwatch</span>
-    <span>Built for people with better things to check.</span>
+    <span>TrailWatch — by House of Ruga</span>
+    <span>One email a week. That&rsquo;s the whole product.</span>
   </footer>
 </div>
 
